@@ -1,11 +1,14 @@
 # Mule CIFS Connector
 
-This is a port of the community based [mulesoft 3.9 samba connector](https://github.com/mulesoft-consulting/samba-connector) to support the Mulesoft 4.x runtime.  It allows for authenticated access to CIFS/Samba (Windows Network) file shares, which is tragically lacking in Mulesoft 4.x.  For some reason the Salesforce company is unable to provide this functionality out of the box on their expensive, buggy, closed source product Mulesoft.  But hey, Gartner likes it, so it must be good!
+This is a port of the community based [mulesoft 3.9 samba connector](https://github.com/mulesoft-consulting/samba-connector) to support the Mulesoft 4.x runtime.  It allows for authenticated access to CIFS/Samba file shares, which is tragically lacking in Mulesoft 4.x.  For some reason the Salesforce company is unable to provide this functionality out of the box on their expensive, buggy, closed source product.  But hey, Gartner likes it, so it must be good!
 
-> __Note__ that this port was completed using `mvn` on the CLI and __Visual Studio Code__ because none of Mulesoft's examples work in their Eclipse plugin.  It is by far the sloppiest, buggiest, worst Eclipse plugin experience I have ever had (feedback from a long time Eclipse user that has also developed Eclipse plugins).  The only thing less acceptable then the current state of the Mulesoft IDE offering is their developer documentation that rarely if ever provides working sample code.  Easily the worst Java platform I have ever used, and the fact that this connector had to be built by the community should be all the evidence required to assist people in making a more informed integration platform choice. 
+> __Note__ that this port was completed using `mvn` on the CLI and __Visual Studio Code__ because none of Mulesoft's examples work in their Eclipse plugin.  It is by far the worst Eclipse plugin experience I have ever had (feedback from a long time Eclipse user that has also developed Eclipse plugins).  The only thing less acceptable then the current state of the Mulesoft IDE offering is their developer documentation; which rarely if ever provides working sample code.  
+
+Mulesoft is easily the worst Java platform I have ever used, and the fact that this connector had to be built by the community should give one pause, and possibly encourage a more informed integration platform choice. 
 
 
 ## Installation
+
 After fetching this repo type:
 
 `mvn compile install`
@@ -17,6 +20,7 @@ You may also want to run the __Test Suite__ to ensure operation:
 `mvn clean test`
 
 ## Setup
+
 If you must use Mulesoft, and you need this functionality:
 
 Add this dependency to your application pom.xml
