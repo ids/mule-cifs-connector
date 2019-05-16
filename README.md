@@ -55,7 +55,6 @@ The __CIFSConfiguration__ can be re-used among several of the __CIFSOperations A
 
 ```
     <cifs:config name="config" 
-        configId="configId" 
         username="joeuser" 
         password="Password123"
         host="localhost"
