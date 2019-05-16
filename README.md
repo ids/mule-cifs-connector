@@ -19,6 +19,8 @@ You may also want to run the __Test Suite__ to ensure operation:
 
 `mvn clean test`
 
+> __Note__ that you will need to update the `test-mule-config.xml` Mulesoft test configuration with a valid CIFS configuration, and ensure the necessary sample file is in place.  The tests assume that the share specified contains a file called `test.xml`.  Before running the test suite make sure to perform the necessary setup, with the correct credentials and CIFS share information.  
+
 ## Setup
 
 If you must use Mulesoft, and you need this functionality:
