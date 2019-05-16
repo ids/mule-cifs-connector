@@ -32,7 +32,7 @@ Add this dependency to your application pom.xml
 <classifier>mule-plugin</classifier>
 ```
 
-However, if you want to extracate yourself from a sloppy overpriced legacy platform and a flawed integration philosophy, consider reading about __Kafka__ and the __Confluent Platform__.
+However, if you want to extracate yourself from a sloppy overpriced legacy platform and a flawed integration philosophy, consider reading about [Kafka](https://kafka.apache.org/) and the [Confluent Platform](https://www.confluent.io/).
 
 ## Usage
 
