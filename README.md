@@ -11,15 +11,15 @@ Mulesoft is easily the worst Java platform I have ever used, and the fact that t
 
 After fetching this repo type:
 
-`mvn compile install`
+`mvn install -DskipTests`
 
-This will install the `mule-cifs-connector` in your local maven repository.
+This will install the `mule-cifs-connector` in your local maven repository. `install -DskipTests` is required as the _Test Suite_ depends on the manual setup of a CIFS share.
 
-You may also want to run the __Test Suite__ to ensure operation:
+You may also want to perform the required setup and run the _Test Suite_ to ensure operation:
 
 `mvn clean test`
 
-> __Note__ that you will need to update the `test-mule-config.xml` Mulesoft test configuration with a valid CIFS configuration, and ensure the necessary sample file is in place.  The tests assume that the share specified contains a file called `test.xml`.  Before running the test suite make sure to perform the necessary setup, with the correct credentials and CIFS share information.  
+> __Note__ that you will need to update the `test-mule-config.xml` Mulesoft test configuration with a valid CIFS configuration, and ensure the necessary sample file is in place.  The tests assume that the share specified contains a file called `test.xml`.  Before running the test suite make sure to perform the necessary setup, with the correct credentials and CIFS share information.  Review the [test-mule-config.xml](src/test/resources/test-mule-config.xml) for specific details before execution.
 
 ## Setup
 
