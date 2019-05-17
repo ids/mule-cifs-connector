@@ -6,12 +6,12 @@
 
     <cifs:config name="config" 
         username="joeuser" 
-        password="Password123"
+        password="password123"
         host="localhost"
         folder="d$/FileDropTest"
-        domain="ACMEDOMAIN">
+        domain="SOMEDOMAIN">
     </cifs:config>
-
+    
     <flow name="readFileFlow">
         <cifs:read-file config-ref="config" fileName="test.xml"/>
         <logger level="INFO" message="READ_FILE_TEST:"/>
@@ -30,9 +30,10 @@
         <logger level="INFO" message="#[payload]"/>
     </flow>
 
-    <flow name="saveFileFromStreamFlow">
+    <flow name="saveFileFlow">
         <cifs:read-file config-ref="config" fileName="test.xml"/>
-        <cifs:save-file-from-stream config-ref="config" fileName="delete-test.xml" payload="#[payload]" />
+        <cifs:save-file config-ref="config" fileName="delete-test.xml" payload="#[payload]" />
+        <cifs:read-file config-ref="config" fileName="delete-test.xml"/>
         <logger level="INFO" message="SAVE_FILE_TEST:"/>
         <logger level="INFO" message="#[payload]"/>
     </flow>

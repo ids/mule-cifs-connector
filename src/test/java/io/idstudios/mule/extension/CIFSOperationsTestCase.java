@@ -77,7 +77,7 @@ public class CIFSOperationsTestCase extends MuleArtifactFunctionalTestCase {
 
   @Test
   public void executeSaveFileFromStreamOperation() throws Exception {
-    Object payloadValue = ((Object) flowRunner("saveFileFromStreamFlow")
+    Object payloadValue = ((Object) flowRunner("saveFileFlow")
                                       .run()
                                       .getMessage()
                                       .getPayload()

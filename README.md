@@ -110,15 +110,15 @@ Eg.
     </flow>
 ```
 
-#### saveFileFromStream
+#### saveFile
 
 Saves the specified `payload` to the output `fileName`:
 
 Eg.
 ```
-    <flow name="saveFileFromStreamFlow">
+    <flow name="saveFileFlow">
         <cifs:read-file config-ref="config" fileName="test.xml"/>
-        <cifs:save-file-from-stream config-ref="config" fileName="delete-test.xml" payload="#[payload]" />
+        <cifs:save-file config-ref="config" fileName="delete-test.xml" payload="#[payload]" />
         <logger level="INFO" message="#[payload]"/>
     </flow>
 ```
