@@ -34,7 +34,9 @@ Add this dependency to your application pom.xml
 <classifier>mule-plugin</classifier>
 ```
 
-However, if you want to extracate yourself from a sloppy overpriced legacy platform and a flawed integration philosophy, consider reading about [Kafka](https://kafka.apache.org/) and the [Confluent Platform](https://www.confluent.io/).
+However, if you want to extracate yourself from an overpriced legacy platform and a flawed integration philosophy, consider reading about [Kafka](https://kafka.apache.org/) and the [Confluent Platform](https://www.confluent.io/).
+
+> The API-Everywhere approach touted by Mulesoft strikes me as a bit naive.  While no one would disagree that API abstractions are preferrable to db-to-db synchronization, a collection of APIs cobbled together and interdependent does not represent an integration strategy.  Furthermore, components that implement basic File, FTP, REST and DB functionality, in place of code, in a GUI designer, accomplish nothing toward furthering that end.  The challenge is in mitigating the matrix of complexity that emerges when trying to evolve and change a myriad of interdependent schemas and APIs over time.  Streaming, and the Kafka/PubSub model, seems to have emerged as an alternative approach toward finding a way to tame these complex issues.  API-Everywhere, in and of itself, is a road to dependency hell like any other.
 
 ## Usage
 
