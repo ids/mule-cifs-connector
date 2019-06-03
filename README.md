@@ -125,6 +125,8 @@ Eg.
     </flow>
 ```
 
+> Note that with the current implementation of __saveFile__ (and deleteFile) the default configuration saves the response as the `payload`, so after saving the file the payload will be a `boolean` value indicating if the file was saved (or not).  If you do not wish your `payload` to be overwritten, make sure to set the target as a variable.  Investigation into having this be more exception based is ongoing.
+
 #### deleteFile
 
 Delete the specified `fileName` at the configured path:
