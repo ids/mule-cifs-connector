@@ -47,7 +47,7 @@ public class CIFSOperations {
 	 * @return true or false
 	 */
 	@MediaType(value = ANY, strict = false)
-	public boolean saveFile(@Config CIFSConfiguration configuration, String payload, String fileName) {
+	public boolean saveFile(@Config CIFSConfiguration configuration, InputStream payload, String fileName) {
 		_logger.debug("Start->saveFile");
 		this.config = configuration;
 
