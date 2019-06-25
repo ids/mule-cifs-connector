@@ -137,3 +137,40 @@ Eg.
         <cifs:delete-file config-ref="config" fileName="delete-test.xml"/>
     </flow>
 ```
+
+## Developing with JavaKerberos
+
+The jCIFS library used by this Mulesoft connector uses the `JavaKerberos` implementation under the hood.  This is the same `JavaKerberos` used by JDBC when connecting to MSSQL using Windows Authentication from Java.
+
+When debugging, it can be helpful to see the `JavaKerberos` debug messages.  This can be enabled by setting the following system property:
+
+```
+-Dsun.security.krb5.debug=true
+```
+
+When developing for Mulesoft on Windows, you may experience long delays when connecting to the file share (or database in the case of JDBC).  This can be due to connection failures when the library is auto-discovering domain controllers.  To avoid this, it is wise to create a `krb5.ini` file and place it in the `C:\Windows` directory:
+
+```
+[libdefaults]
+ dns_lookup_realm = false
+ ticket_lifetime = 24h
+ renew_lifetime = 7d
+ forwardable = true
+ rdns = false
+ default_ccache_name = KEYRING:persistent:%{uid}
+ default_realm = EXAMPLE.COM
+
+[realms]
+ EXAMPLE.COM = {
+  kdc = kdc.example.com
+ }
+
+[domain_realm]
+.example.com = EXAMPLE.COM
+ example.com = EXAMPLE.COM
+
+```
+
+Replace EXAMPLE.COM with the relevant realm or domain.
+
+Ensure that the server value represented by `kdc.example.com` points to the correct Kerberos server or domain controller.  If you do not know the correct `KDC`, you can examine the debug log output for successful connect messages when running without a `krb5.ini` file, and use the specified server mentioned in the output.  Configure the `krb5.ini` accordingly and the specified `KDC` server will then be the default, and should reduce the timeout/retry delays associated with Kerberos authentication.
