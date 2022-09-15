@@ -2,10 +2,11 @@
 
 This is a port of the community based [mulesoft 3.9 samba connector](https://github.com/mulesoft-consulting/samba-connector) to support the Mulesoft 4.x runtime.  It allows for authenticated access to CIFS/Samba file shares, which is tragically lacking in Mulesoft 4.x.  For some reason the Salesforce company is unable to provide this functionality out of the box on their expensive, buggy, closed source product.  But hey, Gartner likes it, so it must be good!
 
-> __Note__ that this port was completed using `mvn` on the CLI and __Visual Studio Code__ because none of Mulesoft's examples work in their Eclipse plugin.  It is by far the worst Eclipse plugin experience I have ever had (feedback from a long time Eclipse user that has also developed Eclipse plugins).  The only thing less acceptable then the current state of the Mulesoft IDE offering is their developer documentation; which rarely if ever provides working sample code.  
+> __Note__ that this port was completed using `mvn` on the CLI and __Visual Studio Code__ because none of Mulesoft's examples work in their Eclipse plugin.  It is not the most polished plugin (feedback from a long time Eclipse user that has also developed Eclipse plugins).   
 
-Mulesoft is easily the worst Java platform I have ever used, and the fact that this connector had to be built by the community should give one pause, and possibly encourage a more informed integration platform choice. 
+Before I ported this connector, our customers were just being told we could not connect to Windows shares because of Java.  Some might find that amusing.
 
+> The API-Everywhere approach for integration strikes me as a bit naive.  While no one would disagree that API abstractions are preferrable to db-to-db synchronization, or other randmom scheduled tasks, a collection of APIs cobbled together and interdependent does not represent a good long term integration strategy, imho.  I know of one customer that is managing 400+ APIs between 5 commerical line of business systems. The challenge in mitigating the matrix of complexity that emerges when trying to evolve and change a myriad of interdependent schemas and APIs over time is nontrivial and expensive.  Even more difficult when you have no control of the endpoints and their version evolution. Unless you explicitly design for decoupling, Mulesoft will pattern you into a world of largely synchronous web api calls.  This is just a new take on DLL hell. Event driven models decouple better, and are more agile over time.  I think the industry had that figured out decades ago, if I recall. I'm not certain Mulesoft lends itself well to event driven architecture.  At least so far, in my travels, I have not seen a good example of it.
 
 ## Installation
 
@@ -33,10 +34,6 @@ Add this dependency to your application pom.xml
 <version>1.0.0-SNAPSHOT</version>
 <classifier>mule-plugin</classifier>
 ```
-
-However, if you want to extracate yourself from an overpriced legacy platform and a flawed integration philosophy, consider reading about [Kafka](https://kafka.apache.org/) and the [Confluent Platform](https://www.confluent.io/).
-
-> The API-Everywhere approach touted by Mulesoft strikes me as a bit naive.  While no one would disagree that API abstractions are preferrable to db-to-db synchronization, a collection of APIs cobbled together and interdependent does not represent an integration strategy.  Furthermore, components that implement basic File, FTP, REST and DB functionality, in place of code, in a GUI designer, accomplish nothing toward furthering that end.  The challenge is in mitigating the matrix of complexity that emerges when trying to evolve and change a myriad of interdependent schemas and APIs over time.  Streaming, and the Kafka/PubSub model, seems to have emerged as an alternative approach toward finding a way to tame these complex issues.  API-Everywhere, in and of itself, is a road to dependency hell like any other.
 
 ## Usage
 
